@@ -122,6 +122,7 @@ export const projects: Project[] = [
     description:
       "An Amazon-inspired shopping app with authentication, product search, filtering, and product management.",
     tags: ["JavaScript", "React", "REST APIs", "Authentication", "Search & Filtering"],
+    demoUrl: "https://arunnxttrendz.ccbp.tech/login",
     caseStudy: {
       problem:
         "Build a shopping application that mirrors the core flows of a real e-commerce product — browsing a catalog, narrowing results, and managing a session securely — as a self-directed project during full-stack training.",
@@ -138,6 +139,7 @@ export const projects: Project[] = [
     description:
       "A Netflix-style streaming interface with content discovery and a fully responsive layout.",
     tags: ["JavaScript", "React", "REST APIs", "Responsive Design"],
+    demoUrl: "https://moviesappbyarun.ccbp.tech/login",
     caseStudy: {
       problem:
         "Recreate the content-discovery experience of a streaming platform — browsing, searching, and viewing title details — across devices.",
