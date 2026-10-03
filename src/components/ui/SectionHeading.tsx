@@ -1,3 +1,8 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { Reveal } from "@/components/motion/Reveal";
+
 export function SectionHeading({
   index,
   title,
@@ -8,10 +13,17 @@ export function SectionHeading({
   description?: string;
 }) {
   return (
-    <div className="mb-10">
+    <Reveal className="mb-10">
       <div className="flex items-center gap-3 mb-3">
         <span className="font-mono text-sm text-accent">{index}</span>
-        <span className="h-px flex-1 max-w-10 bg-border" />
+        <motion.span
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          style={{ transformOrigin: "left" }}
+          className="h-px flex-1 max-w-10 bg-border"
+        />
         <span className="font-mono text-xs uppercase tracking-widest text-muted">
           {title}
         </span>
@@ -20,10 +32,8 @@ export function SectionHeading({
         {title}
       </h2>
       {description && (
-        <p className="mt-3 max-w-2xl text-muted leading-relaxed">
-          {description}
-        </p>
+        <p className="mt-3 max-w-2xl text-muted leading-relaxed">{description}</p>
       )}
-    </div>
+    </Reveal>
   );
 }

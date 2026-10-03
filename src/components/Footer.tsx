@@ -11,7 +11,12 @@ export function Footer() {
           © {new Date().getFullYear()} {profile.name}. Built with Next.js, deployed on Vercel.
         </p>
         <div className="flex items-center gap-4">
-          <a href={`mailto:${profile.email}`} aria-label="Email" className="transition-colors hover:text-accent">
+          <a
+            href={`mailto:${profile.email}`}
+            aria-label="Email"
+            data-cursor=""
+            className="transition-colors hover:text-accent"
+          >
             <Mail size={17} />
           </a>
           <a
@@ -19,6 +24,7 @@ export function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
+            data-cursor=""
             className="transition-colors hover:text-accent"
           >
             <LinkedinIcon size={17} />
@@ -29,6 +35,7 @@ export function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
+              data-cursor=""
               className="transition-colors hover:text-accent"
             >
               <GithubIcon size={17} />

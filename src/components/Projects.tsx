@@ -2,6 +2,7 @@ import { projects } from "@/content/profile";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ProjectCard } from "@/components/ProjectCard";
+import { RevealGroup, RevealItem } from "@/components/motion/Reveal";
 
 export function Projects() {
   return (
@@ -13,11 +14,13 @@ export function Projects() {
           description="A mix of production backend work and self-directed projects. Each one links to a short case study."
         />
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <RevealGroup className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((project) => (
-            <ProjectCard key={project.slug} project={project} />
+            <RevealItem key={project.slug} className="h-full">
+              <ProjectCard project={project} />
+            </RevealItem>
           ))}
-        </div>
+        </RevealGroup>
       </Container>
     </section>
   );

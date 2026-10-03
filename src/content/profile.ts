@@ -1,11 +1,12 @@
 export const profile = {
-  name: "Arun Kumar",
+  name: "B Arun Kumar",
   role: "Backend Engineer",
   location: "Hyderabad, Telangana, India",
   email: "arunkumar800a@gmail.com",
   linkedin: "https://linkedin.com/in/arunbalreddy",
   github: "https://github.com/ArunBalreddy",
   resumeFile: "/resume/Arun-Kumar-Resume.pdf",
+  avatar: "/avatar.jpg",
   tagline: "I build scalable backend systems and REST APIs.",
   summary: [
     "I'm a backend engineer with 3+ years of experience designing and shipping scalable backend services and REST APIs. I work primarily with Node.js, NestJS, and TypeScript, backed by MySQL, PostgreSQL, Redis, and Prisma ORM — with a focus on microservices, asynchronous processing, authentication/authorization, and database performance.",
