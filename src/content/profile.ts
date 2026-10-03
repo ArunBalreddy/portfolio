@@ -4,7 +4,7 @@ export const profile = {
   location: "Hyderabad, Telangana, India",
   email: "arunkumar800a@gmail.com",
   linkedin: "https://linkedin.com/in/arunbalreddy",
-  github: "", // TODO: add GitHub profile URL
+  github: "https://github.com/ArunBalreddy",
   resumeFile: "/resume/Arun-Kumar-Resume.pdf",
   tagline: "I build scalable backend systems and REST APIs.",
   summary: [
