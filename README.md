@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Arun Kumar — Portfolio
 
-## Getting Started
+A personal portfolio site for a backend engineer, built with Next.js (App Router), TypeScript, and Tailwind CSS.
 
-First, run the development server:
+## Sections
+
+- **About** — intro, current role, and education
+- **Skills** — grouped technical skills
+- **Projects** — project cards with tech tags, each linking to a short case study at `/projects/[slug]`
+- **Resume** — one-click PDF download
+- **Contact** — a form that emails you via [Resend](https://resend.com)
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Editing content
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+All personal content (name, bio, skills, projects, case studies) lives in one place:
+[`src/content/profile.ts`](src/content/profile.ts). Edit that file to update the site — no need to touch components.
 
-## Learn More
+To replace the resume, drop a new PDF at `public/resume/Arun-Kumar-Resume.pdf` (or update the
+path in `profile.ts`).
 
-To learn more about Next.js, take a look at the following resources:
+## Contact form setup
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The contact form posts to `src/app/api/contact/route.ts`, which sends email via Resend.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Create a free account at [resend.com](https://resend.com) and generate an API key.
+2. Copy `.env.example` to `.env.local` and fill in `RESEND_API_KEY`.
+3. (Optional) Set `CONTACT_TO_EMAIL` / `CONTACT_FROM_EMAIL` to override the defaults.
 
-## Deploy on Vercel
+Without `RESEND_API_KEY` set, the form will show a friendly error asking visitors to email you
+directly — the rest of the site works fine.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+When deploying on Vercel, add the same environment variables in
+**Project Settings → Environment Variables**.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deploying
+
+This project is zero-config on [Vercel](https://vercel.com):
+
+```bash
+npm i -g vercel
+vercel login
+vercel link
+vercel env add RESEND_API_KEY
+vercel --prod
+```
+
+Or connect the GitHub repo at [vercel.com/new](https://vercel.com/new) for automatic deploys on
+every push.
+
+## Tech stack
+
+Next.js 16 · React 19 · TypeScript · Tailwind CSS v4 · lucide-react · Resend
