@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 
 function subscribe(query: string) {
   return (callback: () => void) => {
@@ -54,4 +54,27 @@ export function useActiveSection(ids: string[]) {
   }, [ids]);
 
   return active;
+}
+
+// Mutable ref (not state) tracking overall page scroll progress [0, 1].
+// Meant to be read inside a render-loop callback (e.g. R3F's useFrame) so
+// scroll updates drive animation without triggering React re-renders.
+export function useScrollProgressRef() {
+  const progress = useRef(0);
+
+  useEffect(() => {
+    function update() {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      progress.current = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+    }
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, []);
+
+  return progress;
 }

@@ -20,7 +20,7 @@ export function Resume() {
         <Reveal>
           <SpotlightCard
             tilt={false}
-            className="flex flex-col items-start justify-between gap-6 rounded-2xl border border-border bg-surface p-8 sm:flex-row sm:items-center"
+            className="flex flex-col items-start justify-between gap-6 rounded-2xl border border-border bg-surface/80 p-8 backdrop-blur-xl sm:flex-row sm:items-center"
           >
             <div className="flex items-center gap-4">
               <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-border bg-background text-accent">

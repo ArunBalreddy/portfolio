@@ -17,7 +17,7 @@ export function Skills() {
         <RevealGroup className="grid gap-6 sm:grid-cols-2">
           {skillGroups.map((group) => (
             <RevealItem key={group.category}>
-              <SpotlightCard className="h-full rounded-2xl border border-border bg-surface p-6">
+              <SpotlightCard className="h-full rounded-2xl border border-border bg-surface/80 p-6 backdrop-blur-xl">
                 <h3 className="font-mono text-xs uppercase tracking-widest text-accent">
                   {group.category}
                 </h3>

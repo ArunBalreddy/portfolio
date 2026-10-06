@@ -66,7 +66,7 @@ export function Contact() {
 
         <div className="grid gap-10 lg:grid-cols-5">
           <Reveal className="lg:col-span-2 space-y-4">
-            <SpotlightCard tilt={false} className="rounded-xl border border-border bg-surface">
+            <SpotlightCard tilt={false} className="rounded-xl border border-border bg-surface/80 backdrop-blur-xl">
               <a
                 href={`mailto:${profile.email}`}
                 data-cursor=""
@@ -76,7 +76,7 @@ export function Contact() {
                 {profile.email}
               </a>
             </SpotlightCard>
-            <SpotlightCard tilt={false} className="rounded-xl border border-border bg-surface">
+            <SpotlightCard tilt={false} className="rounded-xl border border-border bg-surface/80 backdrop-blur-xl">
               <a
                 href={profile.linkedin}
                 target="_blank"
@@ -93,7 +93,7 @@ export function Contact() {
           <Reveal delay={0.1} className="lg:col-span-3">
             <form
               onSubmit={handleSubmit}
-              className="space-y-4 rounded-2xl border border-border bg-surface p-6"
+              className="space-y-4 rounded-2xl border border-border bg-surface/85 p-6 backdrop-blur-xl"
             >
               {/* Honeypot field, hidden from real users via CSS */}
               <input

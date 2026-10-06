@@ -7,6 +7,7 @@ import { profile } from "@/content/profile";
 import { Container } from "@/components/ui/Container";
 import { GithubIcon, LinkedinIcon } from "@/components/icons";
 import { useMagnetic } from "@/components/motion/useMagnetic";
+import { CodeTerminal } from "@/components/scene/CodeTerminal";
 
 const container = {
   hidden: {},
@@ -55,13 +56,12 @@ export function About() {
     <section id="about" className="relative overflow-hidden pt-20 pb-24 sm:pt-28 sm:pb-32">
       <div
         aria-hidden
-        className="animate-aurora pointer-events-none absolute -top-32 left-1/2 h-96 w-[48rem] -translate-x-1/2 rounded-full bg-accent/10 blur-[120px]"
+        className="pointer-events-none absolute inset-y-0 left-0 w-full bg-gradient-to-r from-background/80 via-background/45 to-transparent lg:w-[60%]"
       />
-      <div
-        aria-hidden
-        className="animate-aurora pointer-events-none absolute top-10 right-0 h-80 w-80 rounded-full bg-accent-2/10 blur-[110px]"
-        style={{ animationDelay: "-6s" }}
-      />
+
+      <div className="pointer-events-none absolute left-2 top-0 hidden lg:block" aria-hidden>
+        <CodeTerminal />
+      </div>
 
       <Container className="relative grid gap-14 lg:grid-cols-[1.3fr_1fr] lg:items-center">
         <motion.div variants={container} initial="hidden" animate="show">

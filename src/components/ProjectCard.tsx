@@ -5,7 +5,7 @@ import { SpotlightCard } from "@/components/motion/SpotlightCard";
 
 export function ProjectCard({ project }: { project: Project }) {
   return (
-    <SpotlightCard className="group h-full rounded-2xl border border-border bg-surface transition-colors hover:border-accent/60 hover:bg-surface-hover">
+    <SpotlightCard className="group h-full rounded-2xl border border-border bg-surface/80 backdrop-blur-xl transition-colors hover:border-accent/60 hover:bg-surface-hover/90">
       <Link
         href={`/projects/${project.slug}`}
         data-cursor="View"
