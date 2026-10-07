@@ -48,6 +48,7 @@ const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: profile.name,
+  alternateName: "Arun Balreddy",
   jobTitle: profile.role,
   url: SITE_URL,
   email: profile.email,
