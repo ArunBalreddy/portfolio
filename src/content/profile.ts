@@ -106,6 +106,7 @@ export const projects: Project[] = [
       "JWT",
       "RBAC",
     ],
+    demoUrl: "https://www.syncoffice.com/",
     caseStudy: {
       problem:
         "Candy Technologies needed a single backend to power SyncOffice end-to-end — a multi-tenant SaaS product spanning workforce management, document management, and invoicing — with room to scale as tenants and document volume grew.",
