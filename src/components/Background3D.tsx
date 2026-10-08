@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { usePrefersReducedMotion } from "@/lib/hooks";
 import { fireRequest } from "@/lib/requestBus";
 import { GRAPH_NODES, type NodeScreenPosition } from "@/components/scene/ApiGraph";
@@ -10,8 +10,14 @@ const Scene3D = dynamic(() => import("@/components/scene/Scene3D").then((m) => m
   ssr: false,
 });
 
+type IdleWindow = Window & {
+  requestIdleCallback?: (callback: () => void, opts?: { timeout: number }) => number;
+  cancelIdleCallback?: (handle: number) => void;
+};
+
 export function Background3D() {
   const reducedMotion = usePrefersReducedMotion();
+  const [ready, setReady] = useState(false);
   const labelRefs = useRef<Array<HTMLDivElement | null>>([]);
   const handleNodePositions = useCallback((positions: NodeScreenPosition[]) => {
     positions.forEach((p, i) => {
@@ -36,11 +42,25 @@ export function Background3D() {
     return () => document.removeEventListener("click", handleClick);
   }, [reducedMotion]);
 
+  // Let the real page (text, nav, buttons) hydrate and become interactive
+  // first; the WebGL scene is a visual enhancement, not critical content,
+  // so it shouldn't compete with that for the main thread on first load.
+  useEffect(() => {
+    if (reducedMotion) return;
+    const idleWindow = window as IdleWindow;
+    if (idleWindow.requestIdleCallback) {
+      const id = idleWindow.requestIdleCallback(() => setReady(true), { timeout: 1500 });
+      return () => idleWindow.cancelIdleCallback?.(id);
+    }
+    const id = window.setTimeout(() => setReady(true), 200);
+    return () => window.clearTimeout(id);
+  }, [reducedMotion]);
+
   if (reducedMotion) return null;
 
   return (
     <div className="pointer-events-none fixed inset-0 z-0" aria-hidden="true">
-      <Scene3D onNodePositions={handleNodePositions} />
+      {ready && <Scene3D onNodePositions={handleNodePositions} />}
       <div className="absolute inset-0 hidden overflow-hidden lg:block">
         {GRAPH_NODES.map((node, i) => (
           <div

@@ -1,14 +1,30 @@
-# Arun Kumar — Portfolio
+# B Arun Kumar — Portfolio
 
-A personal portfolio site for a backend engineer, built with Next.js (App Router), TypeScript, and Tailwind CSS.
+A personal portfolio for a backend engineer, built with Next.js (App Router) and TypeScript —
+clean on the surface, with an animated WebGL layer underneath that visualizes an actual backend
+request lifecycle.
 
-## Sections
+**Live:** https://portfolio-arunbalreddys-projects.vercel.app
 
-- **About** — intro, current role, and education
-- **Skills** — grouped technical skills
-- **Projects** — project cards with tech tags, each linking to a short case study at `/projects/[slug]`
-- **Resume** — one-click PDF download
-- **Contact** — a form that emails you via [Resend](https://resend.com)
+![Open Graph preview](https://portfolio-arunbalreddys-projects.vercel.app/opengraph-image)
+
+## Features
+
+- **About, Skills, Projects, Resume, Contact** — the standard portfolio sections, each project
+  linking to a short case study (`/projects/[slug]`) covering problem → approach → outcome.
+- **An actual request-flow visualization**, not just decoration — a `react-three-fiber` scene
+  renders a live node graph (Client → Gateway → Service → Cache/Database) with a pulse that
+  travels the real path on a timer, on scroll, and whenever you click anything interactive on the
+  page. Node labels are DOM elements synced to the 3D camera every frame, not baked into the
+  canvas, so they stay crisp at any resolution.
+- **A floating terminal** in the hero that types out real snippets from the stack below (NestJS,
+  Prisma, Redis).
+- **Interaction layer**: a spring-driven custom cursor, Lenis smooth scrolling, scroll-triggered
+  reveals, magnetic buttons, and tilt/spotlight cards — all gated behind `(hover: hover)` and
+  `prefers-reduced-motion` checks, so touch devices and anyone who's asked for less motion get a
+  clean, static experience instead of a degraded one.
+- **Full SEO/social pass**: generated favicon and Open Graph/Twitter image, `sitemap.xml`,
+  `robots.txt`, Person JSON-LD, canonical URL — all driven by one config file, not hardcoded.
 
 ## Getting started
 
@@ -26,6 +42,10 @@ All personal content (name, bio, skills, projects, case studies) lives in one pl
 
 To replace the resume, drop a new PDF at `public/resume/Arun-Kumar-Resume.pdf` (or update the
 path in `profile.ts`).
+
+The deployed origin (used for the sitemap, canonical URL, and OG image resolution) lives in
+[`src/lib/site.ts`](src/lib/site.ts) — override it with a `NEXT_PUBLIC_SITE_URL` env var instead
+of editing the file once a custom domain is attached.
 
 ## Contact form setup
 
@@ -58,4 +78,5 @@ every push.
 
 ## Tech stack
 
-Next.js 16 · React 19 · TypeScript · Tailwind CSS v4 · lucide-react · Resend
+Next.js 16 · React 19 · TypeScript · Tailwind CSS v4 · Framer Motion · Lenis · three.js /
+react-three-fiber / drei · lucide-react · Resend · Vercel Analytics

@@ -52,6 +52,19 @@ body {
   color: var(--accent-foreground);
 }
 
+/* The custom cursor replaces the mouse pointer, but keyboard users still
+   need a clear, consistent focus indicator — browser defaults are
+   inconsistent against a dark theme, so make it explicit. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
 * {
   scroll-margin-top: 5rem;
 }

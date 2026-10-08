@@ -158,18 +158,20 @@ export function Contact() {
                 {status === "loading" ? "Sending..." : "Send Message"}
               </motion.button>
 
-              {status === "success" && (
-                <p className="flex items-center gap-2 text-sm text-accent">
-                  <CheckCircle2 size={16} />
-                  Thanks — your message is on its way. I&apos;ll reply soon.
-                </p>
-              )}
-              {status === "error" && (
-                <p className="flex items-center gap-2 text-sm text-red-400">
-                  <AlertCircle size={16} />
-                  {errorMessage}
-                </p>
-              )}
+              <div aria-live="polite" role="status">
+                {status === "success" && (
+                  <p className="flex items-center gap-2 text-sm text-accent">
+                    <CheckCircle2 size={16} />
+                    Thanks — your message is on its way. I&apos;ll reply soon.
+                  </p>
+                )}
+                {status === "error" && (
+                  <p className="flex items-center gap-2 text-sm text-red-400">
+                    <AlertCircle size={16} />
+                    {errorMessage}
+                  </p>
+                )}
+              </div>
             </form>
           </Reveal>
         </div>
